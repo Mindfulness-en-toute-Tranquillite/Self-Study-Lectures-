@@ -28,8 +28,12 @@ nunjucks.configure('views', {
 // middleware
 // main page GET
 app.get('/', (req, res) => {
+    const fileData = fs.readFileSync(filePath);
+    const writings = JSON.parse(fileData);
+
+    console.log(writings);
     // res.sendFile(__dirname + '/public/main.html');
-    res.render('main');
+    res.render('main', { list: writings });
 });
 
 app.get('/write', (req, res) => {
@@ -45,8 +49,19 @@ app.post('/write', (req, res) => {
 
     // 데이터 저장
     // data/writing.json 안에 글 내용이 저장
-    const fileData = fs.readFileSync(filePath);
-    console.log(fileData);
+    const fileData = fs.readFileSync(filePath); // 파일 읽기
+
+    const writings = JSON.parse(fileData); // 파일 변환
+
+    //request 데이터를 저장
+    writings.push({
+        'title': title,
+        'contents': contents,
+        'date': date
+    });
+
+    // data/writing.json에 저장하기
+    fs.writeFileSync(filePath, JSON.stringify(writings));
 
     res.render('detail', {title: title, contents: contents, date:date });
 });
