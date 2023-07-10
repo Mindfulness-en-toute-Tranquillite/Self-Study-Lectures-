@@ -61,28 +61,24 @@ app.get('/write', (req, res) => {
     res.render('write');
 });
 
-app.post('/write', (req, res) => {
+app.post('/write', async (req, res) => {
     // request 안에 있는 내용을 처리
     // request.body
     const title = req.body.title;
     const contents = req.body.contents;
-    const date = req.body.date;
 
-    // 데이터 저장
-    // data/writing.json 안에 글 내용이 저장
-    const fileData = fs.readFileSync(filePath); // 파일 읽기
-
-    const writings = JSON.parse(fileData); // 파일 변환
-
-    //request 데이터를 저장
-    writings.push({
-        'title': title,
-        'contents': contents,
-        'date': date
-    });
-
-    // data/writing.json에 저장하기
-    fs.writeFileSync(filePath, JSON.stringify(writings));
+    // mongodb에 저장
+    const writing = new Writing({
+        title: title,
+        contents: contents
+    })
+    const result = await writing.save().then(() => {
+        console.log('Success')
+        res.render('detail', {title: title, contents: contents });
+    }).catch((err) => {
+        console.error(err)
+        res.render('write')
+    })
 
     res.render('detail', {title: title, contents: contents, date:date });
 });
