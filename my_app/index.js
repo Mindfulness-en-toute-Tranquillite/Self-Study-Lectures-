@@ -48,9 +48,11 @@ const Writing = mongoose.model('Writing', WritingSchema);
 
 // middleware
 // main page GET
-app.get('/', (req, res) => {
-    const fileData = fs.readFileSync(filePath);
-    const writings = JSON.parse(fileData);
+app.get('/', async (req, res) => {
+    // const fileData = fs.readFileSync(filePath);
+    // const writings = JSON.parse(fileData);
+
+    let  writings = await Writing.find({})
 
     console.log(writings);
     // res.sendFile(__dirname + '/public/main.html');
@@ -83,8 +85,16 @@ app.post('/write', async (req, res) => {
     res.render('detail', {title: title, contents: contents, date:date });
 });
 
-app.get('/detail', (req, res) => {
-    res.render('detail');
+app.get('/detail/:id', async(req, res) => {
+    const id = req.params.id;
+
+
+    const detail = await Writing.findOne({ _id: id}).then((result) => {
+        res.render('detail', { 'detail': detail })
+    }).catch((err) => {
+        console.error(err)
+    })
+    // res.render('detail');
 })
 
 app.get('/edit', (req, res) => {
