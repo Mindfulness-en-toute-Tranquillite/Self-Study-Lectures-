@@ -101,6 +101,17 @@ app.get('/edit', (req, res) => {
     res.render('detail');
 })
 
+app.post('/delete/:id', async (req, res) => {
+    const id = req.params.id;
+
+    const delete_content = await Writing.deleteOne({ _id: id}).then(() => {
+        console.log('delete success')
+        res.redirect('/')
+    }).catch((err) => {
+        console.error(err)
+    })
+})
+
 app.listen(3000, () => {
     console.log('Server is running');
 });
