@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>메인 페이지</h1>
+    {% if list %}
+    <table class="table">
+        <tr>
+            <tr>글 제목</tr>
+            <tr>글 내용</tr>
+            <tr>글 날짜</tr>
+        </tr>
+        {% for writing in list %}
+            <tr>
+                <td><a href="/detail/{{}}">{{ writing.title }}</a></td>
+                <td>{{ writing.contents }}</td>
+                <td>{{ writing.date }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>작성된 글이 없습니다.</p>
+    {% endif %}
+{% endblock %}
