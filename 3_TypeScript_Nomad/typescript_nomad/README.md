@@ -36,6 +36,20 @@ https://typescript-kr.github.io/pages/basic-types.html
 
 
 #2.1 Implicit Types vs Explicit Types
+ <Type 시스템>
+└ 명시적 정의(변수 선언 시 타입 정의) (Explicit Type)
+let a: boolean = "x"
+→ 🚫 boolean 타입에 string타입 할당 불가 알림
+
+└ 변수만 생성(타입 추론) (Implicit Type) 
+let b = "hello"
+→ b가 string 타입이라고 추론
+b = 1
+→ 🚫 string 타입에 number타입 할당 불가 알림
+
+recommend to use Implicit Type . because readability and simplicity are increasing for developer. Also it is very similar to use as JS.
+
+
 #2.2 Types of TS part One
 #2.3 Types of TS part Two
 #2.4 Types of TS part Three
