@@ -223,6 +223,37 @@ else 안에서는 never형의 name 반환
 
 #3 FUNCTIONS
 #3.0 Call Signatures
+type Add = {
+(a: number, b: number): number;
+}
+// type Add = (a: number, b: number) => number;
+
+const add: Add = (a, b) => a + b
+
+Call(=Function) Signature란 함수의 매개변수와 반환 값의 타입을 모두 type으로 미리 선언하는 것이다
+* React에서 함수로 props를 보낼 때, 어떻게 작동할지 미리 설계 가능
+
+
+****
+5:26 에서 {}를 사용했을 때 오류가 발생하는 이유.
+{}를 사용하면 그 값이 반환값이 함수 내부의 내용으로 처리가 된다
+1. const add:Add = (a,b) => a+b 를 함수로 풀면 다음과 같게 된다.
+function add(a, b) {
+return (a+b)
+}
+
+2. const add:Add = (a,b) => {a+b} 를 함수로 풀면 다음과 같게 된다.
+function add(a, b) {
+a+b;
+}
+
+즉 애로우함수에서 {}를 사용하게 되면 그 안의 값은 반환이 아니라 함수 내부 내용으로 처리 되기에 반환값이 없는 void로 처리된다. 이에 따라 위에서 미리 선안한 Add자료형의 반환값은 number라고 정해놓은 내용과 충돌하기에 에러가 발생.
+=>
+1. 화살표 함수에서 {}를 생략하면 return이 생략된 것
+2. 즉 a + b 와 { return a+b } 는 같은 뜻
+3. {a+b}라고 하면 아무것도 리턴하지 않기 때문에 에러남
+****
+
 #3.1 Overloading
 #3.2 Polymorphism
 #3.3 Generics Recap
