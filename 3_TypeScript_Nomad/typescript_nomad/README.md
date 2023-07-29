@@ -166,6 +166,60 @@ null: 선언O 할당X
 
 
 #2.4 Types of TS part Three
+<Types of TS(part II)>
+✅ unknown
+모든 값을 나타낸다. 이것은 any타입과 비슷하지만 any보다 unknown이 더 안전하다. 이유는 unknown값으로 작업을 수행하는 것은 합법적이지 않기 때문. 변수의 타입을 미리 알지 못할때 사용할때마다 변수타입 지정을 요구한다.
+let a:unknown
+
+if(typeof a === 'number'){
+    let b = a + 1
+}
+if(typeof a === 'string'){
+    let b = a.toUpperCase()
+}
+🚫 let b = a + 1
+
+✅ void
+값을 반환하지 않는 함수의 반환 값을 나타낸다. 함수에 return 문이 없거나 해당 return 문에서 명시적 값을 반환하지 않을 때 항상 유추되는 타입. 아무것도 return 하지않는 함수를 대상으로 사용함. 하지만 타입스크립트는 아무것도 return하지 않는 함수를 자동으로 인식한다.
+
+function hello() {
+    console.log('x')
+}
+const a = hello()
+🚫 a.toUpperCase()
+
+
+function hello():void{
+console.log('x')
+}
+
+// 굳이 :void를 적지않아도된다.
+
+
+
+✅ never
+일부 함수는 값을 반환하지 않는다.함수가 절대 return 하지 않는다.
+이는 함수가 예외를 throw하거나 프로그램 실행을 종료함을 의미한다. return 하지않고 오류를 발생시킴
+function hello():never {
+    throw new Error("zzz")
+    🚫return "a"
+}
+
+function temp(name:string|number):never {
+    if(typeof name === "string"){
+        name
+    } else if(typeof name === "number"){
+        name
+    } else {
+        name
+    }
+}
+
+if 안에서는 string형의 name 반환
+else if 안에서는 number형의 name 반환
+else 안에서는 never형의 name 반환
+⇒ 즉, 제대로 인자가 전달되었다면 else로 올 수 없음
+
 
 #3 FUNCTIONS
 #3.0 Call Signatures
