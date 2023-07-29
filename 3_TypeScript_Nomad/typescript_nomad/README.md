@@ -124,6 +124,47 @@ const tsFunc = ( parameter : string ) : Player => ( { } )
 
 
 #2.3 Types of TS part Two
+ <Types of TS(part II)>
+✅ readonly 사용하기
+JavaScript에서는 mutability(변경 가능성)이 기본값이지만 타입스크립트에서는 readonly를 통해 읽기 전용으로 만들 수 있다. 
+type Player = {
+    readonly name:string
+    age?:number
+}
+
+const playerMaker = (name: string): Player => ({name})
+
+const nico = playerMaker("nico")
+🚫 nico.name = "aa"
+
+const numbers: readonly number[] = [1, 2, 3, 4]
+🚫 numbers.push(1)
+❗ readonly가 있으면 최초 선언 후 수정 불가
+    ⇒ immutability(불변성) 부여
+        but, javascript에서는 그냥 배열
+
+✅ Tuple
+정해진 개수와 순서에 따라 배열 선언
+const player: [string, number, boolean] = ["nico", 1, true]
+❗ readonly도 사용가능 ⇒ readonly [...] 형태
+
+✅ undefined, null, any
+any: 아무 타입
+'무엇이든'. 말 그대로 무엇이든 입력할 수 있게된다. 타입체크를 '비활성화' 시켜버린다.
+
+```
+const a : any[] = [1,2,3,4]
+const b : any = true
+
+a +b //별다른 오류를 내뱉지 않는다.
+```
+이것은 좋지않으며, 타입스크립트의 타입의 보호를 받을 수 없다. 하지만 가끔쓸 수 있으며 그럴땐 any를 써야 한다.
+
+
+undefined: 선언X 할당X
+null: 선언O 할당X
+
+
 #2.4 Types of TS part Three
 
 #3 FUNCTIONS
