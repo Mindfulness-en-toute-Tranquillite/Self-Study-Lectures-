@@ -312,6 +312,39 @@ else console.log(config.path);
 
 
 #3.2 Polymorphism
+✅ polymorphism(다형성)
+❓poly란?
+- many, serveral, much, multi 등과 같은 뜻
+❓morphos란?
+- form, structure 등과 같은 뜻
+❗polymorphos = poly + morphos = 여러 다른 구조
+
+인자들과 반환값에 대하여 형태(타입)에 따라 그에 상응하는 형태(타입)를 갖을 수 있다.
+다형성이란, 여러 타입을 받아들임으로써 여러 형태를 가지는 것을 의미.
+
+concrete type
+- number, boolean, void 등 지금까지 배운 타입
+
+generic type
+- 타입의 placeholder
+
+─ 예시 ────────────────────────
+type SuperPrint = { (arr: T[]): void }
+type SuperReturn = { (arr: T[]): T }
+
+const superPrint: SuperPrint = (arr) => {
+    arr.forEach(i => console.log(i))
+}
+const superReturn: SuperReturn = (arr) => arr[0]
+
+superPrint([1, 2, false, true])
+console.log(superReturn([1, 2, 3, 4]))
+────────────────────────────
+
+any와의 차이점은 해당 타입에 대한 정보를 잃지 않는다.
+any는 any로서 밖에 알 수 없지만 generics는 타입 정보를 알 수 있다.
+
+
 #3.3 Generics Recap
 #3.4 Conclusions
 
