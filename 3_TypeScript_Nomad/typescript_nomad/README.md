@@ -346,6 +346,61 @@ any는 any로서 밖에 알 수 없지만 generics는 타입 정보를 알 수 �
 
 
 #3.3 Generics Recap
+Generic : C#이나 Java와 같은 언어에서 재사용 가능한 컴포넌트를 만들기 위해 사용하는 기법. 단일 타입이 아닌 다양한 타입에서 작동할 수 있는 컴포넌트를 생성할 수 있다. 변수나 인수에 타입을 정해주는 Concrete같이 딱딱한 기법과 달리 어떤 타입을 쓸지 정해주지 않고 그 타입에 대해 어떤 변수를 넣어주냐에 따라 결정되는 유연한 기법이다. 타입스크립트에서 제네릭을 통해 인터페이스, 함수 등의 재사용성을 높일 수 있다.
+any와 가장 큰 차이는 타스의 타입 체커로부터 보호를 못받는다는 것이다
+
+적용방법 (type = {a : T} : T)
+
+function identity< Type >(arg: Type): Type {
+return arg;
+}
+
+// 제네릭 화살표 함수 (tsx기준)
+const identity=< Type extends {} >(arg: Type):Type => {
+return arg;
+}
+
+let output = identity< string >("myString"); // 첫 번째 방법
+let output = identity("myString"); // 두 번째 방법
+// 두 번째 방법은 type argument inference(타입 인수 유추)를 사용한다. 즉, 컴파일러가 전달하는 인수 유형에 따라 자동으로 Type 값을 설정하기를 원한다.
+
+그렇다면 그냥 any를 넣는 것과 Generic의 차이는 무엇일까?
+
+type SuperPrint = {
+(arr: any[]): any
+}
+
+const superPrint: SuperPrint = (arr) => arr[0]
+
+let a = superPrint([1, "b", true]);
+// pass
+a.toUpperCase();
+
+any를 사용하면 위와 같은 경우에도 에러가 발생하지 않는다
+
+type SuperPrint = {
+(arr: T[]): T
+}
+
+const superPrint: SuperPrint = (arr) => arr[0]
+
+let a = superPrint([1, "b", true]);
+// error
+a.toUpperCase();
+
+Generic의 경우 에러가 발생해 보호받을 수 있다
+* Call Signature를 concrete type으로 하나씩 추가하는 형태이기 때문!
+
+type SuperPrint = {
+(arr: T[], x: M): T
+}
+
+const superPrint: SuperPrint = (arr, x) => arr[0]
+
+let a = superPrint([1, "b", true], "hi");
+
+위와 같이 복수의 Generic을 선언해 사용할 수 있다.
+
 #3.4 Conclusions
 
 #4 CLASSES AND INTERFACES
