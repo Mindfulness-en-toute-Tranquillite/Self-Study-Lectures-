@@ -577,6 +577,38 @@ dictKoreanFood.searchWord('bulgoki');
 
 
 #4.2 Interfaces
+- Type의 용도 :
+1. 특정 값이나 객체의 값에 대한 타입을 지정해줄 수 있다.
+2. Type alias(타입에 대한 별명)를 만들어줄 수 있다.
+3. 타입을 특정한 값을 가지도록 제한할 수 있다.
+
+타입과 인터페이스의 차이점은 type 키워드는 interface 키워드에 비해서 좀 더 활용할 수 있는 것이 많다는 것이다.(type 키워드는 다양한 목적으로 사용될 수 있음)
+
+즉, interface는 오로지 객체의 형태를 타입스크립트에게 설명해주기 위한 용도로만 사용된다 !
+
+interface는 위와 같이 상속의 개념을 사용할 수 있다 ! (오른쪽은 type을 이용하여 상속한 방법)
+⇒ 문법 구조가 객체지향 프로그래밍의 개념을 활용 ⭐️
+
+인터페이스의 또 다른 특징으로는 속성(Property)들을 ‘축적’시킬 수 있다는 것이다.
+
+- Static Members
+클래스에는 static 멤버가 있을 수 있다. 이 멤버는 클래스의 특정 인스턴스와 연결되지 않는다. 클래스 생성자 객체 자체를 통해 액세스할 수 있다. static 멤버는 동일한 public, protected 및 private 과 함께 사용할 수도 있다.
+```
+class MyClass {
+static x = 0;
+static printX() {
+console.log(MyClass.x);
+}
+}
+console.log(MyClass.x);
+MyClass.printX();
+```
+
+- Literal Types :
+- 집합 타입의 보다 구체적인 하위 타입
+- 오늘날 TypeScript에는 문자열과 숫자, 두 가지 리터럴 타입이 있는데 이를 사용하면 문자열이나 숫자에 정확한 값을 지정할 수 있다.
+
+
 #4.3 Interfaces part Two
 #4.4 Recap
 #4.5 Polymorphism
