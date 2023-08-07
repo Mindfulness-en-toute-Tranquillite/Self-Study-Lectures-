@@ -610,6 +610,29 @@ MyClass.printX();
 
 
 #4.3 Interfaces part Two
+- implements
+
+implements을 사용하여 클래스가 특정 인터페이스를 충족하는지 확인할 수 있다.
+클래스를 올바르게 구현하지 못하면 오류가 발생한다.
+implements 절은 클래스가 인터페이스 유형으로 처리될 수 있는지 확인하는 것이다. 클래스의 유형이나 메서드는 전혀 변경하지 않는다.
+또한 클래스는 여러 인터페이스를 구현할 수도 있다. 클래스 C는 A, B를 구현한다.
+ex) class C implements A, B { }
+```
+interface Pingable {
+ping(): void;
+}
+
+// Sonar클래스는 Pingable인터페이스를 implement 했기 때문에 Pingable가 가진 ping메서드를 구현해줘야 합니다.
+class Sonar implements Pingable {
+ping() {
+console.log("ping!");
+}
+}
+```
+
+abstract로 상속받은 클래스를 js로 변환하게되면, abstract코드도 js파일에 남게된다. 그래서 코드 최적화를 위해, interface와 implements를 사용한다. 이 두 기능은 js에는 없으므로 ts를 js로 변환한 코드에서 보이지 않는다. 즉 코드최적화 완료! abstract와 interface/implements는 둘다 같은 기능을 구현한다.(상속받는 클래스가 구현할 기능들을 명시함)
+
+
 #4.4 Recap
 #4.5 Polymorphism
 
