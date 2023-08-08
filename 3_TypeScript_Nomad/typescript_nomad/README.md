@@ -654,11 +654,21 @@ Type Aliases과 Interfaces는 매우 유사하며 많은 경우 자유롭게 선
 
 #4.5 Polymorphism
 
+
+
 #5 TYPESCRIPT BLOCKCHAIN
 #5.0 Introduction
 #5.1 Targets
 #5.2 Lib Configuration
 #5.3 Declaration Files
+- strict
+
+모든 엄격한 타입 검사 옵션을 활성화한다.
+strict 플래그는 프로그램 정확성을 더 강력하게 보장하는 광범위한 타입 검사 동작을 가능하게 한다.
+
+tsconfig.json에서 "strict": ture를 통해 strict mode로 해주면, Declaration Files가 없는 경우에 대해서도 에러를 띄워준다.
+
+
 #5.4 JSDoc
 #5.5 Blocks
 #5.6 Definitely Typed
