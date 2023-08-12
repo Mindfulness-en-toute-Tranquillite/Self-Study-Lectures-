@@ -707,6 +707,33 @@ const booleanStorage = new LocalStorage()
 #5 TYPESCRIPT BLOCKCHAIN
 #5.0 Introduction
 #5.1 Targets
+- typescript설치
+npm i -D typescript
+
+package.json 초기화
+npm init -y
+
+tsconfig.json설정
+디렉터리에 tsconfig.json 파일이 있으면 해당 디렉터리가 TypeScript 프로젝트의 루트임을 나타낸다. tsconfig.json 파일은 프로젝트를 컴파일하는 데 필요한 루트 파일과 컴파일러 옵션을 지정한다.
+https://www.typescriptlang.org/docs/handbook/tsconfig-json.html#handbook-content
+
+Target (기본값: ES3)
+최신 브라우저는 모든 ES6 기능을 지원하므로 ES6는 좋은 선택. 코드가 이전 환경에 배포된 경우 더 낮은 target을 설정하거나 최신 환경에서 코드 실행이 보장되는 경우 더 높은 target을 설정하도록 선택할 수 있다.
+ex) 화살표 함수() => this는 ES5 이하이면 함수 표현식으로 바뀐다.
+
+특별한 ESNext 값은 TypeScript 버전이 지원하는 가장 높은 버전을 나타낸다. 이 설정은 다른 TypeScript 버전 간에 동일한 의미가 아니며 업그레이드를 예측하기 어렵게 만들 수 있으므로 주의해서 사용해야 한다.
+https://www.typescriptlang.org/tsconfig#target
+
+"build": "tsc" 또는 "npx tsc"
+
+- Create File in Terminal
+MAC : touch tsconfig.json
+Window : code tsconfig.json // 이후 Crtl + s (저장)
+
+npm i -g typescript
+tsc --init 명령어로 기본적인 tsconfig.json 파일 생성이 가능.
+
+
 #5.2 Lib Configuration
 #5.3 Declaration Files
 - strict
