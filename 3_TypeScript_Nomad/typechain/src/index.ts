@@ -1,7 +1,1 @@
-import {init, exit} from "./myPackage";
-
-init()
-
-exit(1)
-
-localStorage
+console.log("hi")
