@@ -735,6 +735,19 @@ tsc --init 명령어로 기본적인 tsconfig.json 파일 생성이 가능.
 
 
 #5.2 Lib Configuration
+- lib
+
+타입스크립트에게 어떤 API를 사용하고 어떤 환경에서 코드를 실행하는 지를 지정할 수 있다.
+(target 런타임 환경이 무엇인지를 지정한다.)
+프로그램이 브라우저에서 실행되면 lib에 "DOM" 유형 정의를 할 수 있다.
+DOM: window, document 등
+ex) "lib": ["ES6","DOM"]
+
+lib property를 설정하지 않으면 default속성으로는 "lib": ["ES5", "ES6", "ES7", "ES2015.Promise"] 을 가지고 있다. 여기서 "DOM"속성값을 입력을 해주지 않아도 DOM객체를 불러올 수 있는 방법이 있는 데 @types/node 라이브러리를 설치해주면 가능하다.
+$npm install --save-dev @types/node
+typescript 컴파일러가 누락된 DOM객체를 찾을 수 있게된다.
+
+
 #5.3 Declaration Files
 - strict
 
