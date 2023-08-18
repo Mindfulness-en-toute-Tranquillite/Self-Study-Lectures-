@@ -3,8 +3,9 @@
     "compilerOptions": {
         "outDir": "build",
         "target": "ES6",
-        "lib": ["ES6", "DOM"],
+        "lib": ["ES6"],
         "strict": true,
-        "allowJs": true
+        "esModuleInterop": true,
+        "module": "CommonJS" // 브라우저 앱을 만들고 있다면 umd선택.
     }
 }
