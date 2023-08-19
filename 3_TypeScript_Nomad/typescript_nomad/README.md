@@ -817,3 +817,5 @@ npm i @types/node -D
 
 #5.7 Chain
 #5.8 Conclusions
+typescript handbook
+https://www.typescriptlang.org/docs/handbook/intro.html
