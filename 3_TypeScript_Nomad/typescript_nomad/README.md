@@ -807,5 +807,13 @@ https://www.youtube.com/playlist?list=PL7jH19IHhOLOJfXeVqjtiawzNQLxOgTdq
 
 
 #5.6 Definitely Typed
+DefinitelyTyped
+TypeScript type 정의를 위한 리포지토리.
+https://github.com/DefinitelyTyped/DefinitelyTyped
+
+@types/node
+npm i @types/node -D
+
+
 #5.7 Chain
 #5.8 Conclusions
